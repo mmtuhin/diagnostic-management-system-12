@@ -9,7 +9,7 @@ const useLinks = () => {
     const links = (
         <>
           <SingleLink path={""} linkTitle={"Home"}></SingleLink>
-          <SingleLink path={"alltests"} linkTitle={"All Tests"}></SingleLink>
+          <SingleLink path={"availabletests"} linkTitle={"Available Tests"}></SingleLink>
           {/* <SingleLink path={"dashboard"} linkTitle={"Dashboard"}></SingleLink> */}
           {
             user && isAdmin && <SingleLink path={"dashboard/adminhome"} linkTitle={"Dashboard"}></SingleLink>

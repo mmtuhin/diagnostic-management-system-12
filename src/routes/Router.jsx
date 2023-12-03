@@ -17,6 +17,8 @@ import MyProfile from "../pages/MyProfile/MyProfile";
 import PrivateRouter from "./PrivateRouter";
 import UserHome from "../pages/UserHome/UserHome";
 import AdminHome from "../pages/AdminHome/AdminHome";
+import AllTestPublic from "../pages/AllTestPublic/AllTestPublic";
+import TestDetails from "../pages/TestDetails/TestDetails";
 
 const router = createBrowserRouter([
     {
@@ -29,9 +31,14 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: 'alltests',
-                element: <AllTests></AllTests>,
-            }
+                path: 'availabletests',
+                element: <AllTestPublic></AllTestPublic>,
+            },
+            // {
+            //     path: 'testdetails/:id',
+            //     element: <TestDetails></TestDetails>,
+            //     loader: ({params}) = 
+            // }
         ]
     },
     {
