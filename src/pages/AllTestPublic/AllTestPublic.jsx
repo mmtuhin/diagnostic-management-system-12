@@ -5,6 +5,8 @@ import TestPublicCard from "./TestPublicCard/TestPublicCard";
 
 const AllTestPublic = () => {
     const axiosSecure = useAxiosSecure()
+
+    // The tests which is aailable from today to future day.
     const {data: availabletests =[], refetch} = useQuery({
         queryKey:['availabletests'],
         queryFn: async() =>{

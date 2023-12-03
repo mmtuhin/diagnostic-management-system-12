@@ -19,6 +19,8 @@ import UserHome from "../pages/UserHome/UserHome";
 import AdminHome from "../pages/AdminHome/AdminHome";
 import AllTestPublic from "../pages/AllTestPublic/AllTestPublic";
 import TestDetails from "../pages/TestDetails/TestDetails";
+import Payment from "../pages/Payment/payment";
+
 
 const router = createBrowserRouter([
     {
@@ -34,11 +36,11 @@ const router = createBrowserRouter([
                 path: 'availabletests',
                 element: <AllTestPublic></AllTestPublic>,
             },
-            // {
-            //     path: 'testdetails/:id',
-            //     element: <TestDetails></TestDetails>,
-            //     loader: ({params}) = 
-            // }
+            {
+                path: 'testdetails/:id',
+                element: <TestDetails></TestDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/testdetails/${params.id}`)
+            }
         ]
     },
     {
@@ -68,6 +70,11 @@ const router = createBrowserRouter([
            {
             path: 'myprofile',
             element: <MyProfile></MyProfile>
+           },
+           {
+            path: 'payment/:id',
+            element: <Payment></Payment>,
+            loader: ({params}) => fetch(`http://localhost:5000/testdetails/${params.id}`)
            },
         //    Admin Only Routes
         {

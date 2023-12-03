@@ -26,19 +26,19 @@ const Banner = () => {
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <h1 className="mb-5 text-3xl font-bold text-[#9cdfb8] drop-shadow">
-            {activeBanner[0].title}
+            {activeBanner[0]?.title}
           </h1>
           <p className="mb-5">
-          {activeBanner[0].description}
+          {activeBanner[0]?.description}
           </p>
           <div >
             <div>
               <div>
-                <span className="fonr-semibold">Apply Promo </span><span className="px-2 py-1 bg-amber-600 text-black rounded-md">{activeBanner[0].couponCodeName}</span>
+                <span className="fonr-semibold">Apply Promo </span><span className="px-1 bg-amber-600 text-black rounded-md font-semibold">{activeBanner[0]?.couponCodeName}</span>
               </div>
             </div>
             <div className="indicator mt-2">
-              <Link to='/availabletests'><button className="btn btn-sm ">All Tests</button></Link>
+              <Link to='/availabletests'><button className="btn btn-sm px-4 py-2 text-white btn-success bg-[#059862]">All Tests</button></Link>
             </div>
           </div>
         </div>
