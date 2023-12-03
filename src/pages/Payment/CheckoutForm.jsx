@@ -115,6 +115,17 @@ const CheckoutForm = ({ test }) => {
         console.log('payment intent', paymentIntent)
         if (paymentIntent.status === 'succeeded'){
             setTransactionId(paymentIntent.id)
+            const booking = {
+                email: user.email,
+                amount: paymentIntent.amount,
+                testId: test._id,
+                testName: test.testName,
+                transactionId: paymentIntent.id,
+                date: test.testStartDate,
+            }
+
+            const res = await axiosSecure.post('/bookings', booking)
+            console.log(res);
         }
     }
     //Hello
