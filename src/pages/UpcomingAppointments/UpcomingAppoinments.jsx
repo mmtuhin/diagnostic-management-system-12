@@ -7,6 +7,7 @@ const UpcomingAppoinments = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth()
     const userEmail = user.email
+    console.log(userEmail);
   const {
     data: appoinments = [],
     refetch,
