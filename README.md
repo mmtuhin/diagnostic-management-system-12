@@ -1,8 +1,14 @@
-# React + Vite
+# Mediscan Daignostic center
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This site provides following featusres
 
-Currently, two official plugins are available:
+Currently, This is a developing site:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Register user
+- User role management
+- Dashboard according to role
+- JWT token implementation
+- Stripe payment method integrated
+- Book a test
+- Promocode integration
+- And so on
