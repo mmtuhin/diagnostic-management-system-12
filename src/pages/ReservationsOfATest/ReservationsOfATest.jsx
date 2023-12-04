@@ -14,11 +14,11 @@ const ReservationsOfATest = () => {
   //   console.log(query);
   //   console.log(reservedTests);
 
-  const handlePDFSubmission = (id, pdfLink) => {
+  const handlePDFSubmission =async (id, pdfLink) => {
     // You can perform an action here with the submitted PDF link, e.g., save it to the server.
     // Use the `id` to identify the row for which the link is being submitted.
     console.log(`Submitting PDF link for row with ID ${id}: ${pdfLink}`);
-    const res = axiosSecure.patch(`/reservations/${id}`, {pdfLink})
+    const res = await axiosSecure.patch(`/reservations/${id}`, {pdfLink})
     console.log(res.data);
   };
 
