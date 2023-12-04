@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import ThemeChanger from "../../../components/SharedComponents/ThemeChanger";
+import Footer from "react-multi-date-picker/plugins/range_picker_footer";
 
 
 const Navbar = ({ children, links }) => {
@@ -65,6 +66,7 @@ const Navbar = ({ children, links }) => {
         {/* Page content here */}
         {children}
       </div>
+      
       {isDashboard ? (
         <>
           <div className="drawer md:drawer-open ">
@@ -131,6 +133,7 @@ const Navbar = ({ children, links }) => {
           </div>
         </>
       )}
+      
     </div>
   );
 };

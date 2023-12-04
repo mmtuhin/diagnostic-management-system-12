@@ -4,6 +4,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaCalendarCheck } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const AllTests = () => {
  const axiosSecure = useAxiosSecure()
@@ -36,6 +37,8 @@ const AllTests = () => {
       });
   }
 
+  // const handleViewReservation = (id)
+
   return (
     <div>
       <h1>This is all Tests Page</h1>
@@ -59,7 +62,7 @@ const AllTests = () => {
                 <td>{test.testName}</td>
                 <td>{new Date(test.testStartDate).toLocaleDateString()}</td>
                 <td>$ {test.cost}</td>
-                <td className="text-center"><button><FaCalendarCheck className="text-lg hover:cursor-pointer text-green-600"></FaCalendarCheck></button></td>
+                <td className="text-center"><Link to={`/dashboard/reservations/${test._id}`}><button ><FaCalendarCheck className="text-lg hover:cursor-pointer text-green-600"></FaCalendarCheck></button></Link></td>
                 <td>
                     <button className="mr-4"><FaEdit className="text-lg hover:cursor-pointer text-sky-600"></FaEdit></button>
                     <button onClick={() => handleDeleteTest(test._id)}><AiFillDelete className="text-lg hover:cursor-pointer text-red-600"></AiFillDelete></button>

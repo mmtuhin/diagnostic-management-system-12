@@ -20,6 +20,8 @@ import AdminHome from "../pages/AdminHome/AdminHome";
 import AllTestPublic from "../pages/AllTestPublic/AllTestPublic";
 import TestDetails from "../pages/TestDetails/TestDetails";
 import Payment from "../pages/Payment/payment";
+import ReservationsOfATest from "../pages/ReservationsOfATest/ReservationsOfATest";
+
 
 
 const router = createBrowserRouter([
@@ -82,6 +84,11 @@ const router = createBrowserRouter([
             element: <AdminHome></AdminHome>
 
         },
+        {
+            path: 'reservations/:id',
+            element: <ReservationsOfATest></ReservationsOfATest>,
+            loader: ({params}) => fetch(`http://localhost:5000/reservations/${params.id}`)
+           },
         {
             path: 'allusers',
             element: <AllUsers></AllUsers>,

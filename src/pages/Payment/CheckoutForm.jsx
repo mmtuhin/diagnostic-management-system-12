@@ -120,12 +120,12 @@ const CheckoutForm = ({ test }) => {
                 amount: paymentIntent.amount,
                 testId: test._id,
                 testName: test.testName,
-                transactionId: paymentIntent.id,
+                transactionId: transactionId,
                 date: test.testStartDate,
             }
 
             const res = await axiosSecure.post('/bookings', booking)
-            console.log(res);
+            console.log(res.data);
         }
     }
     //Hello
