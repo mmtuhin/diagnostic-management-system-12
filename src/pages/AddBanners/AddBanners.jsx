@@ -8,6 +8,7 @@ const AddBanners = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -18,6 +19,7 @@ const AddBanners = () => {
       console.log(res.data);
       if (res.data.insertedId) {
         toast.success("Banner added successfully!");
+        reset()
       }
     });
   };

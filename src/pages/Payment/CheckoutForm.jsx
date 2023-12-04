@@ -7,16 +7,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 
 const CheckoutForm = ({ test }) => {
-    const [clientSecret, setClientSecret] = useState('')
-    const [transactionId, setTransactionId] = useState('');
-    const {user} = useAuth();
+  const [clientSecret, setClientSecret] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");
   const axiosSecure = useAxiosSecure();
   const [promoCode, setPromoCode] = useState("");
   const [discountedPrice, setDiscountedPrice] = useState(test.cost);
- console.log(test.cost);
+  console.log(test.cost);
 
   const axiosPublic = useAxiosPublic();
   const { data: activeBanner = [] } = useQuery({
@@ -34,7 +34,7 @@ const CheckoutForm = ({ test }) => {
 
     if (matchedBanner) {
       // If promo code matches, calculate discounted price (let's say 20% discount)
-      const discountPercentage = activeBanner[0].couponCodeRate/100; // Example: 20% discount
+      const discountPercentage = activeBanner[0].couponCodeRate / 100; // Example: 20% discount
       const calculatedDiscount = test.cost * discountPercentage;
       const newTotalPrice = test.cost - calculatedDiscount;
 
@@ -43,8 +43,7 @@ const CheckoutForm = ({ test }) => {
 
       console.log("Coupon Matched:", matchedBanner);
       console.log("DiscountedPrice", discountedPrice);
-      setError("")
-
+      setError("");
     } else {
       // Promo code doesn't match any active banner's code
       setError("Invalid promo code. Please try again.");
@@ -57,11 +56,12 @@ const CheckoutForm = ({ test }) => {
   }, [discountedPrice]);
 
   useEffect(() => {
-    axiosSecure.post('/create-payment-intent', {price: discountedPrice})
-    .then(res => {
+    axiosSecure
+      .post("/create-payment-intent", { price: discountedPrice })
+      .then((res) => {
         console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret)
-    })
+        setClientSecret(res.data.clientSecret);
+      });
   }, [axiosSecure, discountedPrice]);
 
   const handleSubmit = async (event) => {
@@ -98,51 +98,61 @@ const CheckoutForm = ({ test }) => {
     }
 
     // Confirm Payment
-    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-            card: card,
-            billing_details: {
-                email: user?.email || 'anonymous',
-                name: user?.displayName || 'anonymous'
-            }
-        }
-    })
+          card: card,
+          billing_details: {
+            email: user?.email || "anonymous",
+            name: user?.displayName || "anonymous",
+          },
+        },
+      });
 
     if (confirmError) {
-        console.log('confirm error')
-    }
-    else {
-        console.log('payment intent', paymentIntent)
-        if (paymentIntent.status === 'succeeded'){
-            setTransactionId(paymentIntent.id)
-            const booking = {
-                email: user.email,
-                amount: paymentIntent.amount,
-                testId: test._id,
-                testName: test.testName,
-                transactionId: transactionId,
-                date: test.testStartDate,
-            }
+      console.log("confirm error");
+    } else {
+      console.log("payment intent", paymentIntent);
+      if (paymentIntent.status === "succeeded") {
+        setTransactionId(paymentIntent.id);
+        const booking = {
+          email: user.email,
+          amount: paymentIntent.amount,
+          testId: test._id,
+          testName: test.testName,
+          transactionId: transactionId,
+          date: test.testStartDate,
+        };
 
-            const res = await axiosSecure.post('/bookings', booking)
-            console.log(res.data);
-        }
+        const res = await axiosSecure.post("/bookings", booking);
+        console.log(res.data);
+      }
     }
     //Hello
   };
   return (
     <div>
-      <form onSubmit={handlePromoCodeSubmit}>
-        <input
+      <form onSubmit={handlePromoCodeSubmit} className="flex justify-center">
+        <div className="join">
+          <input
+            type="text"
+            name="promoCode"
+            placeholder="Enter Promo Code"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+          />
+          <input type="submit" value="Submit" className="btn join-item rounded-r-full"></input>
+        </div>
+        {/* <input
           type="text"
           name="promoCode"
           placeholder="Enter Promo Code"
           value={promoCode}
           onChange={(e) => setPromoCode(e.target.value)}
-        />
-        <input type="submit" value="Submit" />
+        /> */}
+        {/* <input type="submit" value="Submit" /> */}
       </form>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8">
         <CardElement
           options={{
             style: {
@@ -159,11 +169,19 @@ const CheckoutForm = ({ test }) => {
             },
           }}
         />
-        <button className="btn btn-primary btn-sm" type="submit" disabled={!stripe || !clientSecret}>
+        <button
+          className="btn btn-primary btn-sm mt-4"
+          type="submit"
+          disabled={!stripe || !clientSecret}
+        >
           Pay
         </button>
         <p className="text-red-500">{error}</p>
-        {transactionId && <p className="text-green-600">Payment sucess! Your transaction id: {transactionId}</p>}
+        {transactionId && (
+          <p className="text-green-600">
+            Payment sucess! Your transaction id: {transactionId}
+          </p>
+        )}
       </form>
     </div>
   );

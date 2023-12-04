@@ -21,6 +21,8 @@ import AllTestPublic from "../pages/AllTestPublic/AllTestPublic";
 import TestDetails from "../pages/TestDetails/TestDetails";
 import Payment from "../pages/Payment/payment";
 import ReservationsOfATest from "../pages/ReservationsOfATest/ReservationsOfATest";
+import Blogs from "../pages/Blogs/Blogs";
+import DoctorsPage from "../pages/Doctors/DoctorsPage";
 
 
 
@@ -39,9 +41,18 @@ const router = createBrowserRouter([
                 element: <AllTestPublic></AllTestPublic>,
             },
             {
+                path: 'blogs',
+                element: <Blogs></Blogs>,
+
+            },
+            {
+                path: 'doctors',
+                element: <DoctorsPage></DoctorsPage>,
+            },
+            {
                 path: 'testdetails/:id',
                 element: <TestDetails></TestDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/testdetails/${params.id}`)
+                loader: ({params}) => fetch(`https://mediscan-diagnostic-server.vercel.app/testdetails/${params.id}`)
             }
         ]
     },
@@ -76,7 +87,7 @@ const router = createBrowserRouter([
            {
             path: 'payment/:id',
             element: <Payment></Payment>,
-            loader: ({params}) => fetch(`http://localhost:5000/testdetails/${params.id}`)
+            loader: ({params}) => fetch(`https://mediscan-diagnostic-server.vercel.app/testdetails/${params.id}`)
            },
         //    Admin Only Routes
         {
@@ -87,7 +98,7 @@ const router = createBrowserRouter([
         {
             path: 'reservations/:id',
             element: <ReservationsOfATest></ReservationsOfATest>,
-            loader: ({params}) => fetch(`http://localhost:5000/reservations/${params.id}`)
+            loader: ({params}) => fetch(`https://mediscan-diagnostic-server.vercel.app/reservations/${params.id}`)
            },
         {
             path: 'allusers',

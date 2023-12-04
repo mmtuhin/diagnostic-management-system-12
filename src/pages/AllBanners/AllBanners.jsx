@@ -81,7 +81,7 @@ const AllBanners = () => {
           <tbody className="text-center">
             {banners.map((banner, index) => (
               <tr key={banner._id}>
-                <th>{index}</th>
+                <th>{index+1}</th>
                 <td>{banner.bannerName}</td>
                 <td>{banner.bannerImage}</td>
                 <td>{banner.title}</td>
@@ -91,18 +91,18 @@ const AllBanners = () => {
                 {banner.isActive === true ? (
                     <button 
                     
-                     className="btn btn-sm w-28">
+                     className="btn btn-sm w-36">
                       <TiTick className="text-lg text-green-500"></TiTick>Active
                     </button>
                   ) : (
-                    <button onClick={() => handleMakeActive(banner._id)} className="btn btn-sm w-28">
+                    <button onClick={() => handleMakeActive(banner._id)} className="btn btn-sm w-36 text-sm">
                       <ImBlocked className="text-lg text-red-600"></ImBlocked>
                       Make Active
                     </button>
                   )}
                 </td>
-                <td>
-                  <button className="mr-4">
+                <td className="flex">
+                  <button className="mr-2">
                     <FaEdit className="text-lg hover:cursor-pointer text-sky-600"></FaEdit>
                   </button>
                   <button onClick={() => handleDeleteBanner(banner._id)}>

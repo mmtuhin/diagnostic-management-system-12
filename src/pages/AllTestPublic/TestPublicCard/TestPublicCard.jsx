@@ -12,8 +12,8 @@ const TestPublicCard = ({test}) => {
       <div className="card-body ">
         <h2 className="card-title text-center">{test.testName}</h2>
         <div className="flex flex-col md:flex-row justify-between">
-          <h1>Available Date: {new Date(test.testStartDate).toLocaleDateString()}</h1>
-          <h1>Slots: {test.slots}</h1>
+          <h1 className="font-bold text-slate-800">Available Date: {new Date(test.testStartDate).toLocaleDateString()}</h1>
+          <h1 className="font-bold text-white bg-green-500 px-2 py-1 rounded-sm">Slots: {test.slots}</h1>
         </div>
         <div>
           

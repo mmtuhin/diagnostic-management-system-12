@@ -10,6 +10,8 @@ const useLinks = () => {
         <>
           <SingleLink path={""} linkTitle={"Home"}></SingleLink>
           <SingleLink path={"availabletests"} linkTitle={"Available Tests"}></SingleLink>
+          <SingleLink path={"blogs"} linkTitle={"Blogs"}></SingleLink>
+          <SingleLink path={"doctors"} linkTitle={"Doctors"}></SingleLink>
           {/* <SingleLink path={"dashboard"} linkTitle={"Dashboard"}></SingleLink> */}
           {
             user && isAdmin && <SingleLink path={"dashboard/adminhome"} linkTitle={"Dashboard"}></SingleLink>

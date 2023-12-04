@@ -10,6 +10,7 @@ const AddTest = () => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
@@ -20,12 +21,13 @@ const AddTest = () => {
       console.log(res.data);
       if (res.data.insertedId) {
         toast.success("Test is added successfully!");
+        reset();
       }
     });
   };
   return (
     <div>
-      <h1 className="text-center text-2xl">Please insert test details</h1>
+      <h1 className="text-center text-2xl my-4">Please insert test details</h1>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-grow-0 w-full  shadow-2xl bg-base-100">

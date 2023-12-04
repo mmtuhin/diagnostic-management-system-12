@@ -3,9 +3,8 @@ import useAuth from "../../../hooks/useAuth";
 import ThemeChanger from "../../../components/SharedComponents/ThemeChanger";
 import Footer from "react-multi-date-picker/plugins/range_picker_footer";
 
-
 const Navbar = ({ children, links }) => {
-  const {user, logOut} = useAuth();
+  const { user, logOut } = useAuth();
   const location = useLocation();
   const isDashboard = location.pathname.includes("/dashboard");
   // console.log(isDashboard);
@@ -47,15 +46,30 @@ const Navbar = ({ children, links }) => {
                 ""
               ) : (
                 <>
-                  <div className="flex-1 px-2 mx-2">Mediscan</div>
+                  <div className="flex-1 px-2 mx-2 text-xl font-semibold">
+                    Mediscan
+                  </div>
                   <div className="flex-none hidden lg:block">
                     <ul className="menu menu-horizontal">
                       {/* Navbar menu content here */}
                       {links}
                       <ThemeChanger></ThemeChanger>
-                      {user?.email? <button onClick={logOut} className="btn btn-sm">Sign Out</button>
-                      : <Link to='/login' className="btn btn-sm">Login</Link>
-                    }
+                      {user?.email ? (
+                        <div className="flex justify-center items-center gap-4">
+                          <div className="avatar">
+                            <div className="w-12 rounded-full">
+                              <img src={user.photoURL} />
+                            </div>
+                          </div>
+                          <button onClick={logOut} className="btn btn-sm">
+                            Sign Out
+                          </button>
+                        </div>
+                      ) : (
+                        <Link to="/login" className="btn btn-sm">
+                          Login
+                        </Link>
+                      )}
                     </ul>
                   </div>
                 </>
@@ -66,7 +80,7 @@ const Navbar = ({ children, links }) => {
         {/* Page content here */}
         {children}
       </div>
-      
+
       {isDashboard ? (
         <>
           <div className="drawer md:drawer-open ">
@@ -110,7 +124,6 @@ const Navbar = ({ children, links }) => {
               <ul className="menu p-4 w-72 min-h-full bg-base-200 text-base-content">
                 {/* Sidebar content here */}
                 {links}
-                
               </ul>
             </div>
           </div>
@@ -126,14 +139,21 @@ const Navbar = ({ children, links }) => {
             <ul className="menu p-4 w-80 min-h-full bg-base-200">
               {/* Sidebar content here */}
               {links}
-              {user?.email? <button onClick={logOut} className="btn btn-sm">Sign Out</button>
-                      : <Link to='/login' className="btn btn-sm">Login</Link>
-                    }
+              {user?.email ? (
+                <>
+                  <button onClick={logOut} className="btn btn-sm">
+                    Sign Out
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" className="btn btn-sm">
+                  Login
+                </Link>
+              )}
             </ul>
           </div>
         </>
       )}
-      
     </div>
   );
 };

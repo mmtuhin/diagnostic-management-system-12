@@ -10,8 +10,8 @@ const Payment = () => {
     // console.log(test);
     return (
         <div>
-            <h1>Make you payment to order</h1>
-            <div>
+            <h1 className="text-center my-8">Make you payment to order</h1>
+            <div className="">
                 <Elements stripe={stripePromise}>
                     <CheckoutForm test={test}></CheckoutForm>
                 </Elements>

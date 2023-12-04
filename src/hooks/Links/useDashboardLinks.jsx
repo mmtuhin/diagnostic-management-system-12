@@ -11,7 +11,6 @@ const useDashboardLinks = () => {
       <SingleLink path={'dashboard/allusers'} linkTitle={'All users'}></SingleLink>
       <SingleLink path={'dashboard/addtest'} linkTitle={'Add a Test'}></SingleLink>
       <SingleLink path={'dashboard/alltest'} linkTitle={'All Tests'}></SingleLink>
-      <SingleLink path={'dashboard/reservations'} linkTitle={'Reservations'}></SingleLink>
       <SingleLink path={'dashboard/addbanner'} linkTitle={'Add Banner'}></SingleLink>
       <SingleLink path={'dashboard/allbanners'} linkTitle={'All Banners'}></SingleLink>
       <div className="divider"></div>

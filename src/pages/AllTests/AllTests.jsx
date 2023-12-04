@@ -41,8 +41,8 @@ const AllTests = () => {
 
   return (
     <div>
-      <h1>This is all Tests Page</h1>
-      <h1>Total Tests:{tests.length}</h1>
+      
+      <h1 className="text-center text-2xl my-4">Total Tests:{tests.length}</h1>
       <div className="overflow-x-auto">
         <table className="table table-xs">
           <thead className="text-center">
@@ -58,11 +58,11 @@ const AllTests = () => {
           <tbody className="text-center">
             {
                 tests.map((test,index) =>  <tr key={test._id}>
-                <th>{index}</th>
+                <th>{index+1}</th>
                 <td>{test.testName}</td>
                 <td>{new Date(test.testStartDate).toLocaleDateString()}</td>
                 <td>$ {test.cost}</td>
-                <td className="text-center"><Link to={`/dashboard/reservations/${test._id}`}><button ><FaCalendarCheck className="text-lg hover:cursor-pointer text-green-600"></FaCalendarCheck></button></Link></td>
+                <td className="text-center flex justify-center"><Link to={`/dashboard/reservations/${test._id}`}><button className="flex gap-2"><FaCalendarCheck className="text-lg hover:cursor-pointer text-green-600"></FaCalendarCheck> View</button></Link></td>
                 <td>
                     <button className="mr-4"><FaEdit className="text-lg hover:cursor-pointer text-sky-600"></FaEdit></button>
                     <button onClick={() => handleDeleteTest(test._id)}><AiFillDelete className="text-lg hover:cursor-pointer text-red-600"></AiFillDelete></button>

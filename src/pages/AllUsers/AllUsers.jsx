@@ -112,7 +112,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user._id} className="hover:bg-sky-950">
+              <tr key={user._id} className="hover:bg-sky-950 hover:text-white">
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
