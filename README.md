@@ -1,10 +1,8 @@
 # Mediscan Daignostic Center
 ##Live Site: [Mediscan](https://mediscan-d8a8b.web.app/)
-This site provides following featusres
 
 ***
-
-Currently, This is a developing site:
+This site provides following features:
 
 - Register user
 - User role management
@@ -14,3 +12,5 @@ Currently, This is a developing site:
 - Book a test
 - Promocode integration
 - And so on
+
+Currently, This is a developing site. More fetures will be added soon.
